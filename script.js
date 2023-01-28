@@ -30,3 +30,21 @@ newTest
   .catch((err) => {
     console.log("This is catch function #######", err);
   });
+
+// 2023.1.28 promise with parameter
+
+const promiseWithPara = new Promise((resolve, reject) => {
+  try {
+    resolve("This is resolve");
+  } catch (error) {
+    reject(error);
+  }
+});
+
+promiseWithPara
+  .then((data) => {
+    console.log("This is inside of then", data);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
