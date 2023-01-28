@@ -48,3 +48,46 @@ promiseWithPara
   .catch((err) => {
     console.log(err);
   });
+
+const test = new Promise((resolve, reject) => {
+  resolve();
+});
+
+test
+  .then(
+    new Promise((resolve, reject) => {
+      console.log("1");
+    })
+      .then()
+      .catch()
+  )
+  .catch();
+
+// promisehell.callbackhell
+new Promise((resolve, reject) => {
+  resolve("promise1 resolved");
+})
+  .then((data) => {
+    console.log(data);
+    new Promise((resolve, reject) => {
+      reject("promise2 rejected");
+    })
+      .then((data) => {
+        console.log(data);
+        new Promise((resolve, reject) => {
+          resolve("promise3 resolved");
+        })
+          .then((data) => {
+            console.log(data);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  })
+  .catch((err) => {
+    console.log(err);
+  });
