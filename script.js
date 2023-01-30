@@ -123,3 +123,14 @@ const fetchData = () => {
       console.log("Ouside catch: ", err);
     });
 };
+
+// async await
+
+const fetchData = async () => {
+  const url = "https://dummyjson.com/products";
+  const response = await fetch(url);
+  const data = await response.json();
+  console.log(data.products);
+};
+
+fetchData();
