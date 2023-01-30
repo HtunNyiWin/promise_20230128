@@ -91,3 +91,35 @@ new Promise((resolve, reject) => {
   .catch((err) => {
     console.log(err);
   });
+
+// fetch Data
+
+// fetch promise --> error တက်၇င်  --> resolve ကိုပဲ ခေါ်
+// response.json() --> error တက်၇င် --> reject ကို ခေါ်
+// sync ဆိုသည်မှာ စောင့်ပေးသည့် code
+// async ဆိုသည်မှာ မစောင့်ပေးသည့် code
+
+// const fetchData = () => {
+//   const responsePromise = fetch("https://fakestoreapi.com/products");
+//   responsePromise.then((response) => {
+//     console.log(response);
+//   });
+// };
+// fetchData();
+
+const fetchData = () => {
+  fetch("https://fakestoreapi.com/products")
+    .then((response) => {
+      response
+        .json()
+        .then((data) => {
+          displayData(data);
+        })
+        .catch((err) => {
+          console.log("Inside catch...", err);
+        });
+    })
+    .catch((err) => {
+      console.log("Ouside catch: ", err);
+    });
+};
